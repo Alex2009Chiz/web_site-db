@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Таблица товаров</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Таблица товаров</h1>
+
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Производитель</th>
+            <th>Форма</th>
+            <th>Цена</th>
+            <th>Номер</th>
+        </tr>
+        {% for items in medicines %}
+        {% if name==items[0] %}
+
+        <tr>
+            <td>{{ items[0]}}</td>
+            <td>{{ items[1]}}</td>
+            <td>{{ items[2]}}</td>
+            <td>{{ items[3]}}</td>
+            <td>{{ items[4]}}</td>
+        </tr>
+        {%  endif %}
+        {% endfor %}
+      </table>
+</form>
+</body>
+</html>

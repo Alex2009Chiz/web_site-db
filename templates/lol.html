@@ -18,9 +18,6 @@
         th {
             background-color: #f2f2f2;
         }
-        .editable {
-            background-color: #fff7e6;
-        }
     </style>
 </head>
 <body>
@@ -35,40 +32,16 @@
             <th>Номер</th>
         </tr>
         {% for items in medicines %}
+
         <tr>
-            <td class="editable">{{ items[0] }}</td>
-            <td class="editable">{{ items[1] }}</td>
-            <td class="editable">{{ items[2] }}</td>
-            <td class="editable">{{ items[3] }}</td>
-            <td class="editable">{{ items[4] }}</td>
+            <td><input type="text" name="name_{{items[4]}}" value="{{ items[0]}}"></td>
+           <td><input type="text" value="{{ items[1]}}"></td>
+            <td><input type="text" value="{{ items[2]}}"></td>
+            <td><input type="text" value="{{ items[3]}}"></td>
+            <td><input type="text" value="{{ items[4]}}"></td>
         </tr>
         {% endfor %}
+
     </table>
-
-    <script>
-        document.querySelectorAll('.editable').forEach(cell => {
-            cell.addEventListener('click', () => {
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.value = cell.innerText;
-                cell.innerText = '';
-                cell.appendChild(input);
-
-                input.addEventListener('blur', () => {
-                    cell.innerText = input.value;
-                    cell.removeChild(input);
-                });
-
-                input.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') {
-                        cell.innerText = input.value;
-                        cell.removeChild(input);
-                    }
-                });
-
-                input.focus();
-            });
-        });
-    </script>
 </body>
 </html>
